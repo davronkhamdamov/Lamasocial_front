@@ -1,45 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./topBar.css"
 import { Search, Person, Chat } from "@mui/icons-material"
 import { Link } from "react-router-dom";
+import time from "../../utils/time";
 
-const DropDawn = ({ data }) => {
+const DropDawn = ({ data, messageData }) => {
   return (
     <div className="dropDawn" >
       <div className="navbar">
         <p>{data}</p>
       </div>
       <div className="wrap">
-        <div className="list">
-          <img className="user" src="/assets/person/1.jpeg" alt="i"></img>
-          <div>
-            <p className="message">text</p>
-            <p className="date">Sun May 07 2023 19:21:23</p>
-          </div>
-          <img src="/assets/post/2.jpg" alt="l" className="post_img"></img>
-        </div>
-        <div className="list">
-          <img className="user" src="/assets/person/1.jpeg" alt="i"></img>
-          <div>
-            <p className="message">text</p>
-            <p className="date">Sun May 07 2023 19:21:23</p>
-          </div>
-          <img src="/assets/post/2.jpg" alt="l" className="post_img"></img>
-        </div>
-        <div className="list">
-          <img className="user" src="/assets/person/1.jpeg" alt="i"></img>
-          <div>
-            <p className="message">text</p>
-            <p className="date">Sun May 07 2023 19:21:23</p>
-          </div>
-          <img src="/assets/post/2.jpg" alt="l" className="post_img"></img>
-        </div>
+        {messageData?.length ? messageData.map(e => {
+          return (
+            <div className="list" key={e.id}>
+              <img className="user" src={e.imgUrl} alt="i"></img>
+              <div>
+                <p className="message">{e.title}</p>
+                <p className="date">{time(e).replace('Hozirgina qoyilgan post', 'Hozirgina sizga like bosdi').replace('daqiqa avval qoyilgan post', 'daqiqa avval like bosdi')}</p>
+              </div>
+              <img src={e.video_img} alt="l" className="post_img"></img>
+            </div>
+          )
+        }) :
+          <p style={{
+            textAlign: "center"
+          }}>Hech qanday xabar yoq</p>
+        }
       </div>
-    </div >)
+    </div >
+  )
 }
 export default function Topbar({ img_url }) {
   const [person, setPerson] = useState(false)
   const [chat, setChat] = useState(false)
+  const [messageData, setMessageData] = useState(null)
+  useEffect(() => {
+    fetch('http://localhost:4000/message/list', {
+      method: "GET",
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }).then(res => res.json())
+      .then(async data => setMessageData(await data))
+  }, [])
   return (
     <>
       {person || chat ?
@@ -81,10 +85,10 @@ export default function Topbar({ img_url }) {
               setPerson(false)
             }}>
               <Chat />
-              <span className="topbarIconBadge">2</span>
+              <span className="topbarIconBadge">{messageData?.length}</span>
             </div>
             {person && <DropDawn data={'Subscrible'} />}
-            {chat && <DropDawn data={'message'} />}
+            {chat && <DropDawn data={'message'} messageData={messageData} />}
           </div>
           <Link to='/profile'>
             <img src={img_url} alt="" className="topbarImg" />

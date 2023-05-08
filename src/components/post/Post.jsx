@@ -7,7 +7,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 export default function Post({ userData, post, user }) {
-  const [like, setLike] = useState(post?.likes.filter((e) => e.isLike).length);
+  const [like, setLike] = useState(post?.likes.filter((e) => e.isLike)?.length);
   const [likeIcon, setLikeIcon] = useState(false);
   const [isLiked, setIsLiked] = useState(
     post.likes[0] &&
@@ -36,7 +36,7 @@ export default function Post({ userData, post, user }) {
       .then((res) => res.json())
       .then((data) => {
         const likeCount = data?.likes?.filter((e) => e?.isLike);
-        if (likeCount?.length === 0) {
+        if (!likeCount[0]) {
           setLike(0);
           setIsLiked(false);
         } else {
