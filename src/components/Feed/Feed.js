@@ -8,7 +8,7 @@ export default function Feed({ userData, data, img_url }) {
       <div className="feedWrapper">
         <Share img_url={img_url} />
         {
-          data?.reverse()?.map((p) => (
+          data?.map((p) => (
             p?.videos.map(e => (
               <Post userData={userData} key={e?.id} post={e} user={p} />
             ))
