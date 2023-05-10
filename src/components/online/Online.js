@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./online.css";
 
 export default function Online({ userData }) {
     const [dataOnline, setDataOnline] = useState(null)
-    useEffect(() => {
-
-    }, [])
     setTimeout(() => {
         fetch('http://localhost:4000/user/online', {
             method: 'POST',

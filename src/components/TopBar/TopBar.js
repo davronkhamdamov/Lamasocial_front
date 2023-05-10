@@ -16,7 +16,11 @@ const DropDawn = ({ data, messageData }) => {
             <div className="list" key={e.id}>
               <img className="user" src={e.imgUrl} alt="i"></img>
               <div>
-                <p className="message">{e.title}</p>
+                <p className="message" style={
+                  {
+                    fontSize: e.title.length < 23 ? e.title.length * 0.9 :
+                      e.title.length / 2.2
+                  }}>{e.title}</p>
                 <p className="date">{time(e).replace('Hozirgina qoyilgan post', 'Hozirgina sizga like bosdi').replace('daqiqa avval qoyilgan post', 'daqiqa avval like bosdi')}</p>
               </div>
               <img src={e.video_img} alt="l" className="post_img"></img>

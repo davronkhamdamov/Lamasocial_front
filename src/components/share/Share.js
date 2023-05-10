@@ -59,7 +59,6 @@ export default function Share({ img_url }) {
                             </div>
                         </label>
                         <input id="file" type="file" accept="image/*" ref={img} />
-
                         <div className="shareOption">
                             <Label htmlColor="blue" className="shareIcon" />
                             <span className="shareOptionText" >Tag</span>
