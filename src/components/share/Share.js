@@ -25,7 +25,7 @@ export default function Share({ img_url }) {
         })
             .then((res) => res.json())
             .then((data) => {
-                fetch("http://54.234.23.89:4000/video/upload", {
+                fetch("https://54.234.23.89:4000/video/upload", {
                     method: "POST",
                     body: JSON.stringify({
                         title: title.trim(),

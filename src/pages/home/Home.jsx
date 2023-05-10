@@ -8,7 +8,7 @@ import "./home.css";
 function Home({ setUserData, img_url, userData }) {
   const [data, setData] = useState();
   useEffect(() => {
-    fetch("http://54.234.23.89:4000/user/users", {
+    fetch("https://54.234.23.89:4000/user/users", {
       method: "GET",
       headers: {
         token: localStorage.getItem("token"),

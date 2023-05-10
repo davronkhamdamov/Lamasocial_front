@@ -4,7 +4,7 @@ import "./online.css";
 export default function Online({ userData }) {
     const [dataOnline, setDataOnline] = useState(null)
     setTimeout(() => {
-        fetch('http://54.234.23.89:4000/user/online', {
+        fetch('https://54.234.23.89:4000/user/online', {
             method: 'POST',
             headers: {
                 token: localStorage.getItem("token")

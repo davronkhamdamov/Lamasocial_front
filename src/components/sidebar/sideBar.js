@@ -6,7 +6,7 @@ import CloseFriend from "../closeFriend/CloseFriend";
 function SideBar() {
   const [data, setData] = useState(null)
   useEffect(() => {
-    fetch("http://54.234.23.89:4000/user/users", {
+    fetch("https://54.234.23.89:4000/user/users", {
       method: "GET",
       headers: {
         "token": localStorage.getItem("token")

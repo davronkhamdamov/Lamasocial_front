@@ -17,7 +17,7 @@ export default function Login() {
       }
     });
     if (!values.includes(false)) {
-      fetch("http://54.234.23.89:4000/user/login", {
+      fetch("https://54.234.23.89:4000/user/login", {
         method: "POST",
         body: JSON.stringify({
           email: values[0],
