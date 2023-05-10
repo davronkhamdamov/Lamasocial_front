@@ -31,7 +31,7 @@ export default function Register() {
         return;
       }
 
-      fetch("http://localhost:4000/user/signup", {
+      fetch("http://54.234.23.89:4000/user/signup", {
         method: "POST",
         body: JSON.stringify({
           username: values[0],

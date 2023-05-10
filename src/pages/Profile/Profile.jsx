@@ -15,7 +15,7 @@ export default function Profile({
   const [userInfo, setUserInfo] = useState(null);
   const [coverImg_url, setCoverImg_url] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:4000/user/user", {
+    fetch("http://54.234.23.89:4000/user/user", {
       method: "GET",
       headers: { token: localStorage.getItem("token") },
     })
@@ -51,7 +51,7 @@ export default function Profile({
     formData.append("upload_preset", "youtube");
     const imgUrl = await fileUpload(formData);
     setCoverImg_url(imgUrl);
-    fetch("http://localhost:4000/user/cover", {
+    fetch("http://54.234.23.89:4000/user/cover", {
       method: "POST",
       body: JSON.stringify({
         filename: imgUrl,
@@ -69,7 +69,7 @@ export default function Profile({
     formData.append("upload_preset", "youtube");
     const imgUrl = await fileUpload(formData);
     setImg_url(imgUrl);
-    fetch("http://localhost:4000/user/photo", {
+    fetch("http://54.234.23.89:4000/user/photo", {
       method: "POST",
       body: JSON.stringify({
         filename: imgUrl,
