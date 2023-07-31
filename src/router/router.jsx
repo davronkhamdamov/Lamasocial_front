@@ -12,7 +12,7 @@ const Router = () => {
   const [img_url, setImg_url] = useState(null);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
-    fetch("https://54.234.23.89:4000/user/user", {
+    fetch("http://localhost:4000/user/user", {
       method: "GET",
       headers: {
         token: localStorage.getItem("token"),

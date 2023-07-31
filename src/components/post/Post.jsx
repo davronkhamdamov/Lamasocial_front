@@ -23,7 +23,7 @@ export default function Post({ userData, post, user }) {
     setTimeout(() => {
       setLikeIcon(false);
     }, 1400);
-    fetch("https://54.234.23.89:4000/likes/like", {
+    fetch("https://lcoalhost:4000/likes/like", {
       method: "POST",
       body: JSON.stringify({
         video_id: id,

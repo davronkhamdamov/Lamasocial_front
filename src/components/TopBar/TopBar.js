@@ -40,7 +40,7 @@ export default function Topbar({ img_url }) {
   const [chat, setChat] = useState(false)
   const [messageData, setMessageData] = useState(null)
   useEffect(() => {
-    fetch('https://54.234.23.89:4000/message/list', {
+    fetch('http://localhost:4000/message/list', {
       method: "GET",
       headers: {
         token: localStorage.getItem('token')
