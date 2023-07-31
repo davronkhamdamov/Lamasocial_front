@@ -20,6 +20,10 @@
 .profileUserImg:hover ~ .labelProfile {
   display: flex;
 }
+.labelProfile:hover {
+  display: flex;
+}
+
 .labelProfile {
   width: 150px;
   height: 150px;

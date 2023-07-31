@@ -51,7 +51,7 @@ export default function Profile({
     formData.append("upload_preset", "youtube");
     const imgUrl = await fileUpload(formData);
     setCoverImg_url(imgUrl);
-    fetch("https://localhost:4000/user/cover", {
+    fetch("http://localhost:4000/user/cover", {
       method: "POST",
       body: JSON.stringify({
         filename: imgUrl,
@@ -69,7 +69,7 @@ export default function Profile({
     formData.append("upload_preset", "youtube");
     const imgUrl = await fileUpload(formData);
     setImg_url(imgUrl);
-    fetch("https://localhost:4000/user/photo", {
+    fetch("http://localhost:4000/user/photo", {
       method: "POST",
       body: JSON.stringify({
         filename: imgUrl,
